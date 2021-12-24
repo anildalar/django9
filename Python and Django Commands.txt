@@ -1,0 +1,206 @@
+Python Commands
+
+To check where is python is installed
+	where python
+
+py -m pip install --upgrade pip
+py -m pip --version
+
+pip is package manager for python
+
+Download PIP
+
+
+Python Library(Django) <------ Download -------- pypi.org
+
+Django is based on MVT (Model-View-Template) architecture. 
+
+MVT is a software design pattern for developing a web application. 
+
+There are 2 Environment Available in Python
+	1. Global Enviroment  (Comes default with python)
+	2. Virtual/Local Envronment (venv need to install seperatly)
+
+To Check What Packages are installed on Global Environment
+	pip freeze
+
+Installing the virtual Environment
+	py -m pip install --user virtualenv
+
+
+Create a new virtual Enviromnet
+	py -m venv myenv
+
+
+Activate the virual Enviroment
+	.\env\Scripts\activate
+		or
+	source .\env\Scripts\activate
+
+
+To Check What Packages are installed on Virtual Environment?
+	1. Go inside the virual env
+		.\env\Scripts\activate
+		or
+		source .\env\Scripts\activate
+
+	2. Run the command
+		pip freeze
+
+To Deactivate the virual Envronment
+	deactivate
+
+
+Django Commands
+
+	pip install django
+
+. = current directory
+
+To create the django Project	
+
+django-admin --help
+
+	django-admin startproject <projectname> <directoryname>
+	django-admin startproject flipkart .
+	
+python manage.py --help
+
+	python manage.py migrate
+	python manage.py runserver
+
+	python manage.py collectstatic
+
+
+Django Projects are devided into multiple Apps
+
+Category APp
+
+python manage.py startapp <appname>
+	
+	python manage.py startapp fk_app
+
+
+Database Managers
+
+https://sqlitestudio.pl/
+https://sqlitebrowser.org/
+
+To Apply Migration
+	python manage.py migrate
+
+python manage.py createsuperuser
+
+
+create urls.py inside fk_app
+
+For ImageFields
+python -m pip install Pillow
+
+To create Migration file from models
+	python manage.py makemigrations
+	python manage.py migrate
+
+To Appy Migration
+	python manage.py migrate
+
+https://docs.djangoproject.com/en/3.2/ref/urls/
+
+django path function
+	path(route, view, kwargs=None, name=None)
+
+
+We have to configure the static file configure
+
+settings.py
+
+	import os
+	STATIC_URL = '/static/'
+	STATIC_ROOT = os.path.join(BASE_DIR, '/')
+	STATICFILES_DIRS = (
+   		 os.path.join(BASE_DIR, "static"),
+	)
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, '/media')
+
+Client 1 India
+	django 3.1.1
+	package1
+
+
+Client 2 UK
+	django 3.2.9
+	package2
+
+SQLite
+
+
+Django Framework
+	Web Application / Website using Python 
+
+
+Python Frameworks for Web Developments
+	1. Django
+		https://www.djangoproject.com/
+	2. Flask
+		https://flask.palletsprojects.com/en/2.0.x/
+
+
+
+
+
+PHP Development
+	
+	Frameworks
+		1. Laravel 2. Codeigniter 
+	
+
+
+Database
+	1. SQLite 3(Default) https://sqlitestudio.pl/
+	2. MYSQL
+	3. MongoDb
+	4. MariaDB
+	5. POSTGREES
+Web App = 
+	1. Frontend
+	2. Backend
+
+
+
+Client ----> Request ---> Server ( Django Backend)
+Client <---- Response ---< Server ( Django Backend)
+
+
+
+
+
+
+Django System Works on MVT
+M = Model (Database Queries)
+V = View  (View Files)
+T = Template (Logic)
+
+Django System is Collection of Multiple Apps
+
+
+models.py
+
+from django.db import models
+
+# Create your models here.
+
+class Category(models.Model):
+    #1. CategoryName
+    cat_name = models.CharField(max_length=50,unique=True)
+    cat_slug = models.CharField(max_length=50,unique=True)
+    cat_desc = models.TextField(max_length=50,blank=True)
+    cat_img = models.ImageField(upload_to='photo/categories',blank=True)
+    #2. Constructor
+    #3. Method
+    def __str__(self):
+        return self.category_name
+
+table -> migration file --> modals.py
